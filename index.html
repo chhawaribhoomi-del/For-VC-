@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday ❤️</title>
+
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+  overflow: hidden;
+}
+
+/* Button */
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  background: pink;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Hidden content */
+#surprise {
+  display: none;
+  margin-top: 20px;
+}
+
+/* Typing text */
+#typing {
+  font-size: 22px;
+  color: pink;
+  margin-top: 20px;
+}
+
+/* Falling hearts */
+.heart {
+  position: fixed;
+  top: -10px;
+  color: pink;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Happy Birthday ❤️</h1>
+
+<button onclick="showSurprise()">Click here to surprise him!</button>
+
+<div id="surprise">
+
+  <div id="typing"></div>
+
+  <br>
+
+  <!-- Image -->
+  <img src="photo.jpg" width="250">
+
+  <br><br>
+
+  <!-- YouTube Song -->
+  <iframe width="300" height="200"
+  src="https://www.youtube.com/embed/izdeBydQFFA?autoplay=1&loop=1&playlist=izdeBydQFFA">
+  </iframe>
+
+</div>
+
+<script>
+
+/* Show surprise */
+function showSurprise() {
+  document.getElementById("surprise").style.display = "block";
+  typeText();
+}
+
+/* Typing effect */
+let text = “you’re not perfect
+but you’re somehow my favorite
+ihateeeyouuuuuu i swearrrrr 
+  you so annoying but i love to be with you huhhh
+    um um um aur kya hi likhu yawrrr sab toh likh hi diyaaa 
+      mere passs words ni hai ab 
+        sab khtm hogye😭😭😭😭
+       But but 
+You are my darling , my heart 
+I hope this brings a little smile on your face and reminds you of how  much you mean to me 🫶🏻😭i hope you love this ! nd nd HAPPYYY BIRTHDAYYY VC💘🧿
+        BE BLESSEDDDD ALWAYSSSS❤️";
+let i = 0;
+
+function typeText() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 50);
+  }
+}
+
+/* Falling hearts */
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
