@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Vaman ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* LOCK SCREEN */
+#lockScreen {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: pink;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* MAIN CONTENT */
+#main {
+  display: none;
+  padding-top: 30px;
+}
+
+h1 {
+  color: pink;
+}
+
+/* LETTER BOX */
+#letterBox {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 20px pink;
+  animation: fadeIn 2s ease;
+}
+
+#typing {
+  white-space: pre-line;
+  line-height: 1.6;
+  color: #ffb6c1;
+}
+
+/* IMAGE */
+img {
+  width: 260px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 0 15px pink;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  top: -10px;
+  color: pink;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <h2>Enter your name 💌</h2>
+  <input type="text" id="nameInput" placeholder="Your name">
+  <br>
+  <button onclick="unlock()">Unlock ❤️</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main">
+
+<h1>🎂 Happy Birthday Vaman ❤️</h1>
+
+<div id="letterBox">
+  <div id="typing"></div>
+</div>
+
+<img src="photo.jpg">
+
+<br><br>
+
+<!-- MUSIC -->
+<iframe id="music" width="0" height="0"
+src=""
+frameborder="0" allow="autoplay"></iframe>
+
+</div>
+
+<script>
+
+/* UNLOCK */
+function unlock() {
+  let name = document.getElementById("nameInput").value.toLowerCase();
+
+  if (name === "vaman") {
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("main").style.display = "block";
+
+    startEverything();
+  } else {
+    alert("Only for Vaman 😌");
+  }
+}
+
+/* START ALL */
+function startEverything() {
+  typeText();
+
+  // start music AFTER click (mobile safe)
+  document.getElementById("music").src =
+  "https://www.youtube.com/embed/IzdeBydQFFA?autoplay=1&loop=1&playlist=IzdeBydQFFA";
+}
+
+/* LETTER */
+let text = `you’re not perfect
+but you’re somehow my favorite 💘
+
+ihateeeyouuuuuu i swearrrrr 😭
+you so annoying but i love to be with you huhhh 😗
+
+um um um aur kya hi likhu yawrrr sab toh likh hi diyaaa 
+mere passs words ni hai ab 
+sab khtm hogye😭😭😭😭
+
+But but…
+
+You are my darling, my heart ❤️
+I hope this brings a little smile on your face 
+and reminds you of how much you mean to me 🫶🏻😭
+
+i hope you love this!
+
+HAPPYYY BIRTHDAYYY VAMAN 💘🧿
+BE BLESSEDDDD ALWAYSSSS ❤️`;
+
+let i = 0;
+
+function typeText() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeText, 35);
+  }
+}
+
+/* HEARTS */
+function createHeart() {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
